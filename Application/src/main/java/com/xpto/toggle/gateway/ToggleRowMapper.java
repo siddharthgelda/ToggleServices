@@ -13,7 +13,7 @@ public class ToggleRowMapper implements RowMapper<ToggleDTO> {
 
         toggleDTO.setName(rs.getString("name"));
         toggleDTO.setId(rs.getInt("id"));
-        toggleDTO.setStatus(rs.getInt("isActivate") == 1 ? Boolean.TRUE : Boolean.FALSE);
+        toggleDTO.setStatus(rs.getInt("status") == 1 ? Boolean.TRUE : Boolean.FALSE);
         return toggleDTO;
     }
 

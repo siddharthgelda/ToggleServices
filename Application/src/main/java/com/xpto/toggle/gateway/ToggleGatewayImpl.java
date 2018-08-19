@@ -6,6 +6,7 @@ import com.xpto.toggle.Exceptions.Error;
 import com.xpto.toggle.dto.ServiceToggleDTO;
 import com.xpto.toggle.dto.ToggleDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
@@ -28,19 +29,23 @@ public class ToggleGatewayImpl implements ToggleGateway {
     @Override
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = {BedRequestExcpetion.class})
     public int createToogle(ServiceToggleDTO request) {
-        int serviceId = addService(request);
-        if (serviceId < 1) {
-            throw new BedRequestExcpetion(new Error());
+      try {
+          int serviceId = addService(request);
+          if (serviceId < 1) {
+              throw new BedRequestExcpetion(new Error());
+          }
+          int toggleId = addToggle(request.getToggle());
+          if (toggleId < 1) {
+              throw new BedRequestExcpetion(new Error());
+          }
+          int count = addOnetoManyRealtionship(serviceId, toggleId, 1);
+          if (count > 0) {
+              return 1;
+          }
+      }catch(DataAccessException e){
+          throw new BedRequestExcpetion(new Error(1, "TOGGLE-CREATE-FAILED", "toggle create failed "+e.getMessage()));
         }
-        int toggleId = addToggle(request.getToggle());
-        if (toggleId < 1) {
-            throw new BedRequestExcpetion(new Error());
-        }
-        int count = addOnetoManyRealtionship(serviceId, toggleId, 1);
-        if (count > 0) {
-            return 1;
-        }
-        throw new BedRequestExcpetion(new Error(1, "TOGGLE-CREATE-FAILED", "toggle creat failed"));
+        throw new BedRequestExcpetion(new Error(1, "TOGGLE-CREATE-FAILED", "toggle create failed"));
     }
 
     @Override
