@@ -1,6 +1,6 @@
 package com.xpto.toggle.real;
 
-import com.xpto.toggle.dto.CreateToggleDTO;
+import com.xpto.toggle.dto.ServiceToggleDTO;
 import com.xpto.toggle.dto.ToggleDTO;
 import com.xpto.toggle.gateway.ToggleGateway;
 import org.junit.Assert;
@@ -21,7 +21,7 @@ public class GatewayTest {
 
     @Test
     public void createToogleTest() {
-        CreateToggleDTO request = new CreateToggleDTO();
+        ServiceToggleDTO request = new ServiceToggleDTO();
 
         request.setServiceName("IDM");
         request.setVersion("v2.0");
@@ -29,12 +29,26 @@ public class GatewayTest {
         toggleDTO.setName("coupon");
         toggleDTO.setStatus(Boolean.TRUE);
         request.setToggle(toggleDTO);
-        toggleGateway.createToogle(request);
+        int result = toggleGateway.createToogle(request);
+        Assert.assertEquals(1, result);
     }
 
     @Test
-    public  void  getToggleByServiceName(){
-        List<ToggleDTO> list=toggleGateway.getTogglesBySericeName("ABC","v1.0");
+    public void getToggleByServiceName() {
+        List<ToggleDTO> list = toggleGateway.getTogglesBySericeName("ABC", "v1.0");
         Assert.assertNotNull(list);
+    }
+
+    @Test
+    public void UpdateToogleTest() {
+        ServiceToggleDTO request = new ServiceToggleDTO();
+
+        request.setServiceName("ABC");
+        ToggleDTO toggleDTO = new ToggleDTO();
+        toggleDTO.setName("isButtonBlue");
+        toggleDTO.setStatus(Boolean.TRUE);
+        request.setToggle(toggleDTO);
+        int result = toggleGateway.updateServiceToogle(request);
+        Assert.assertEquals(1, result);
     }
 }

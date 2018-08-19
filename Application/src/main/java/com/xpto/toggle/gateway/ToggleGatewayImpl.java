@@ -3,7 +3,7 @@ package com.xpto.toggle.gateway;
 import com.xpto.toggle.ApplicationConstant;
 import com.xpto.toggle.Exceptions.BedRequestExcpetion;
 import com.xpto.toggle.Exceptions.Error;
-import com.xpto.toggle.dto.CreateToggleDTO;
+import com.xpto.toggle.dto.ServiceToggleDTO;
 import com.xpto.toggle.dto.ToggleDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -28,7 +27,7 @@ public class ToggleGatewayImpl implements ToggleGateway {
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = {BedRequestExcpetion.class})
-    public boolean createToogle(CreateToggleDTO request) {
+    public int createToogle(ServiceToggleDTO request) {
         int serviceId = addService(request);
         if (serviceId < 1) {
             throw new BedRequestExcpetion(new Error());
@@ -39,23 +38,29 @@ public class ToggleGatewayImpl implements ToggleGateway {
         }
         int count = addOnetoManyRealtionship(serviceId, toggleId, 1);
         if (count > 0) {
-            return true;
+            return 1;
         }
-        throw new BedRequestExcpetion(new Error());
+        throw new BedRequestExcpetion(new Error(1, "TOGGLE-CREATE-FAILED", "toggle creat failed"));
     }
 
     @Override
-    public List<ToggleDTO> getTogglesBySericeName(String serviceName,String version) {
-        String param[]={serviceName,version};
-        return  jdbcTemplate.query(ApplicationConstant.getTogglesByServiceNameSql,param,new ToggleRowMapper());
-       }
+    public int updateServiceToogle(ServiceToggleDTO request) {
+        Object param[] = {request.getToggle().getStatus() ? 1 : 0, request.getServiceName(), request.getToggle().getName()};
+        return jdbcTemplate.update(ApplicationConstant.updateServiceToggle, param);
+    }
+
+    @Override
+    public List<ToggleDTO> getTogglesBySericeName(String serviceName, String version) {
+        String param[] = {serviceName, version};
+        return jdbcTemplate.query(ApplicationConstant.getTogglesByServiceNameSql, param, new ToggleRowMapper());
+    }
 
     private int addOnetoManyRealtionship(int serviceId, int toggleId, int stauts) {
         return jdbcTemplate.update(new PreparedStatementCreator() {
             @Override
             public PreparedStatement createPreparedStatement(Connection connection) throws SQLException {
 
-                PreparedStatement ps = connection.prepareStatement(ApplicationConstant.createOnetoManyRealtionshipSql);
+                PreparedStatement ps = connection.prepareStatement(ApplicationConstant.createOneToManyRelationshipSql);
 
                 ps.setInt(1, serviceId);
                 ps.setInt(2, toggleId);
@@ -66,7 +71,7 @@ public class ToggleGatewayImpl implements ToggleGateway {
         });
     }
 
-    private int addService(CreateToggleDTO request) {
+    private int addService(ServiceToggleDTO request) {
         KeyHolder keyHolder = new GeneratedKeyHolder();
         jdbcTemplate.update(new PreparedStatementCreator() {
             @Override
