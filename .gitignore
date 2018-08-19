@@ -1,0 +1,9 @@
+
+Application/.idea/.name
+Application/.idea/*.*
+Application/.idea/dictionaries/S.xml
+Application/.idea/*/*.*
+Application/manifest.yml
+Application/target/**/*.*
+Application/target/*.*
+Application/toggleService.iml
