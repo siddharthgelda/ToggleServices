@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import java.util.List;
 
 public interface ToggleService {
-    public ResponseEntity createToogle(ServiceToggleDTO request);
+    public int createToogle(ServiceToggleDTO request);
 
     public ResponseEntity updateServiceToggle(ServiceToggleDTO request);
 

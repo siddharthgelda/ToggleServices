@@ -17,9 +17,10 @@ public class ToggleServiceImpl implements ToggleService {
     private ToggleGateway toggleGateway;
 
     @Override
-    public ResponseEntity createToogle(ServiceToggleDTO request) {
+    public int createToogle(ServiceToggleDTO request) {
         int result = toggleGateway.createToogle(request);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+        return result;
+
     }
 
     @Override
