@@ -6,16 +6,22 @@ import com.xpto.toggle.dto.ServiceToggleDTO;
 import com.xpto.toggle.dto.ToggleDTO;
 import com.xpto.toggle.gateway.ToggleGateway;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.CacheControl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import javax.validation.Valid;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+
 @Service
 public class ToggleServiceImpl implements ToggleService {
     @Autowired
     private ToggleGateway toggleGateway;
-
+    @Value("${application.cacheControl}")
+    private int cacheControl;
     @Override
     public int createToogle(ServiceToggleDTO request) {
         int result = toggleGateway.createToogle(request);
@@ -36,6 +42,9 @@ public class ToggleServiceImpl implements ToggleService {
     @Override
     public ResponseEntity<List<ToggleDTO>> getTogglesByServiceName(String serviceName, String version) {
         List<ToggleDTO> list = toggleGateway.getTogglesBySericeName(serviceName, version);
-        return new ResponseEntity(list, HttpStatus.OK);
+       // return new ResponseEntity(list, HttpStatus.OK);
+        return ResponseEntity.ok()
+                .cacheControl(CacheControl.maxAge(60, TimeUnit.SECONDS))
+                .body(list);
     }
 }
