@@ -23,10 +23,10 @@ public class GatewayTest {
     public void createToogleTest() {
         ServiceToggleDTO request = new ServiceToggleDTO();
 
-        request.setServiceName("IDM");
+        request.setServiceName("Customer");
         request.setVersion("v2.0");
         ToggleDTO toggleDTO = new ToggleDTO();
-        toggleDTO.setName("coupon");
+        toggleDTO.setName("search");
         toggleDTO.setStatus(Boolean.TRUE);
         request.setToggle(toggleDTO);
         int result = toggleGateway.createToogle(request);
@@ -35,17 +35,18 @@ public class GatewayTest {
 
     @Test
     public void getToggleByServiceName() {
-        List<ToggleDTO> list = toggleGateway.getTogglesBySericeName("ABC", "v1.0");
+        List<ToggleDTO> list = toggleGateway.getTogglesBySericeName("Customer", "v2.0");
         Assert.assertNotNull(list);
+        Assert.assertEquals(1,list.size());
     }
 
     @Test
     public void UpdateToogleTest() {
         ServiceToggleDTO request = new ServiceToggleDTO();
 
-        request.setServiceName("ABC");
+        request.setServiceName("Customer");
         ToggleDTO toggleDTO = new ToggleDTO();
-        toggleDTO.setName("isButtonBlue");
+        toggleDTO.setName("search");
         toggleDTO.setStatus(Boolean.TRUE);
         request.setToggle(toggleDTO);
         int result = toggleGateway.updateServiceToogle(request);

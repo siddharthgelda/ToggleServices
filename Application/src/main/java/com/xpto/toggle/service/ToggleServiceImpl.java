@@ -35,7 +35,7 @@ public class ToggleServiceImpl implements ToggleService {
         logger.debug("end validation called");
         logger.debug("start createToogle called");
         int result = toggleGateway.createToogle(request);
-        logger.debug("end createToogle called. result " + result);
+        logger.debug("end create Toggle called. result " + result);
         return result;
 
     }
