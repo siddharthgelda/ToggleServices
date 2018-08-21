@@ -28,4 +28,13 @@ public class ServiceToggleDTO {
     public void setVersion(String version) {
         this.version = version;
     }
+
+    @Override
+    public String toString() {
+        return "ServiceToggleDTO{" +
+                "serviceName='" + serviceName + '\'' +
+                ", version='" + version + '\'' +
+                ", toggle=" + toggle.toString() +
+                '}';
+    }
 }
