@@ -1,9 +1,11 @@
 package com.xpto.toggle.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ServiceDTO {
+    @JsonIgnore
     private Integer id;
     private String name;
     private String version;

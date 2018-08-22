@@ -1,0 +1,114 @@
+{
+	"id": "eb764711-9e92-2a19-c99c-46ab3d0b2c3d",
+	"name": "toggleServices",
+	"description": "",
+	"order": [
+		"bf29b4ce-1ffd-e08d-9354-5ad5896cdd76",
+		"782b4010-b24f-6d19-3a3a-3ceec9dcdaa3",
+		"7f6185d7-5b5b-4629-befb-c0e297342ffe"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1534687864598,
+	"owner": 0,
+	"public": false,
+	"requests": [
+		{
+			"id": "782b4010-b24f-6d19-3a3a-3ceec9dcdaa3",
+			"headers": "Accept: application/json\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/toggle",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "PUT",
+			"collectionId": "eb764711-9e92-2a19-c99c-46ab3d0b2c3d",
+			"data": [],
+			"dataMode": "raw",
+			"name": "http://localhost:8080/services/ABC/v1.0",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1534692139170,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\r\n\t\"serviceName\": \"uvw \",\r\n\t\"version\": \"v1.0\",\r\n\t\"toggle\": {\r\n\t\t\"id\": 1,\r\n\t\t\"name\": \"isButtonBlue\",\r\n\t\t\"status\": true\r\n\t}\r\n}"
+		},
+		{
+			"id": "7f6185d7-5b5b-4629-befb-c0e297342ffe",
+			"headers": "Accept: application/json\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/toggle",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "eb764711-9e92-2a19-c99c-46ab3d0b2c3d",
+			"data": [],
+			"dataMode": "raw",
+			"name": "http://localhost:8080/services/ABC/v1.0",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1534692176642,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\r\n\t\"serviceName\": \"Oauth \",\r\n\t\"version\": \"v1.0\",\r\n\t\"toggle\": {\r\n\t\t\"id\": 1,\r\n\t\t\"name\": \"token\",\r\n\t\t\"status\": true\r\n\t}\r\n}"
+		},
+		{
+			"id": "bf29b4ce-1ffd-e08d-9354-5ad5896cdd76",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:8080/services/uvw/v1.0",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "eb764711-9e92-2a19-c99c-46ab3d0b2c3d",
+			"data": null,
+			"dataMode": "params",
+			"name": "http://localhost:8080/services/uvw/v1.0",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1534692120368,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		}
+	]
+}

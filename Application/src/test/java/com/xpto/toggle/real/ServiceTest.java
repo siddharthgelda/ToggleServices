@@ -51,7 +51,7 @@ public class ServiceTest {
         request.setVersion("v2.0");
         ToggleDTO toggleDTO = new ToggleDTO();
         toggleDTO.setName("coupon");
-        toggleDTO.setStatus(Boolean.TRUE);
+        toggleDTO.setStatus(Boolean.FALSE);
         request.setToggle(toggleDTO);
         return request;
     }
