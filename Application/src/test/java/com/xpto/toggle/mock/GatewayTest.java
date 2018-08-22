@@ -1,7 +1,6 @@
 package com.xpto.toggle.mock;
 
-import com.xpto.toggle.ApplicationConstant;
-import com.xpto.toggle.Helper.Helper;
+import com.xpto.toggle.helper.Helper;
 import com.xpto.toggle.dto.ServiceToggleDTO;
 import com.xpto.toggle.dto.ToggleDTO;
 import com.xpto.toggle.gateway.ToggleGatewayImpl;

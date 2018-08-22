@@ -1,8 +1,9 @@
-package com.xpto.toggle.Helper;
+package com.xpto.toggle.helper;
 
 import com.xpto.toggle.ApplicationConstant;
 import com.xpto.toggle.dto.ServiceToggleDTO;
 import com.xpto.toggle.dto.ToggleDTO;
+import com.xpto.toggle.gateway.ToggleIdRowMapper;
 import com.xpto.toggle.gateway.ToggleRowMapper;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.support.KeyHolder;
@@ -73,6 +74,10 @@ public class Helper {
     public ToggleRowMapper getRowMapper()
     {
         return new ToggleRowMapper();
+    }
+
+    public ToggleIdRowMapper getToggleIdRowMapper(){
+        return new ToggleIdRowMapper();
     }
 
 }

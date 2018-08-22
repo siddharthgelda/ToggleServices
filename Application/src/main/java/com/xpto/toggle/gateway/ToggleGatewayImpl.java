@@ -3,7 +3,7 @@ package com.xpto.toggle.gateway;
 import com.xpto.toggle.ApplicationConstant;
 import com.xpto.toggle.Exceptions.BedRequestExcpetion;
 import com.xpto.toggle.Exceptions.Error;
-import com.xpto.toggle.Helper.Helper;
+import com.xpto.toggle.helper.Helper;
 import com.xpto.toggle.dto.ServiceToggleDTO;
 import com.xpto.toggle.dto.ToggleDTO;
 import org.slf4j.Logger;
@@ -81,8 +81,17 @@ public class ToggleGatewayImpl implements ToggleGateway {
 
 
     private int addToggle(ToggleDTO toggle) {
-        KeyHolder keyHolder = new GeneratedKeyHolder();
-        jdbcTemplate.update(helper.addTogglePreparedStatementCreator(toggle), keyHolder);
-        return helper.getID(keyHolder);
+        List<Integer> ids = getToggleId(toggle);
+        if (ids == null || ids.size() < 1) {
+            KeyHolder keyHolder = new GeneratedKeyHolder();
+            jdbcTemplate.update(helper.addTogglePreparedStatementCreator(toggle), keyHolder);
+            return helper.getID(keyHolder);
+        } else {
+            return ids.get(0).intValue();
+        }
+    }
+    private List<Integer> getToggleId(ToggleDTO toggle) {
+        String param[] = {toggle.getName()};
+      return  jdbcTemplate.query(ApplicationConstant.getToggleIdSql, param, helper.getToggleIdRowMapper());
     }
 }

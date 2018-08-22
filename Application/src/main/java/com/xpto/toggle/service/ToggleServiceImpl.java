@@ -2,7 +2,7 @@ package com.xpto.toggle.service;
 
 import com.xpto.toggle.Exceptions.BedRequestExcpetion;
 import com.xpto.toggle.Exceptions.Error;
-import com.xpto.toggle.Helper.ToggleValidation;
+import com.xpto.toggle.helper.ToggleValidation;
 import com.xpto.toggle.dto.ServiceToggleDTO;
 import com.xpto.toggle.dto.ToggleDTO;
 import com.xpto.toggle.gateway.ToggleGateway;

@@ -1,4 +1,4 @@
-package com.xpto.toggle.Helper;
+package com.xpto.toggle.helper;
 
 import com.xpto.toggle.Exceptions.BedRequestExcpetion;
 import com.xpto.toggle.Exceptions.Error;
