@@ -1,7 +1,7 @@
 # ToggleServices
 ToggleService
 
-This project use for feather managerment beetween multipal services, we used two enttiy in the application
+This project use for feature managerment between multiple services, we used two enttiy in the application
 
 1. Services</br>
 2. Toggle
@@ -62,7 +62,7 @@ After setup above prerequisite
         
         C.  Get Service
         
-
+11. Please take useage guide for operation detail from application folder.
  
  
  
