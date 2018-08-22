@@ -6,7 +6,7 @@
     <groupId>ServiceManager</groupId>
     <artifactId>toggleService</artifactId>
     <version>0.1.0</version>
-
+    <packaging>war</packaging>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
