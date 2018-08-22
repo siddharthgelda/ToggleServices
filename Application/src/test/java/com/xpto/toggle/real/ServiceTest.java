@@ -23,35 +23,28 @@ public class ServiceTest {
 
     @Test
     public void createToogleTest(){
-        try {
+
             int result = toggleService.createToogle(createRequest());
-        }catch (Exception e)
-        {
-            e.printStackTrace();
-        }
-      //  Assert.assertEquals(1, result);
+
+        Assert.assertEquals(1, result);
 
     }
 
 
     @Test
         public void updateServiceToggleTest() {
-        try{
+
         ResponseEntity entity = toggleService.updateServiceToggle(createRequest());
-    }catch (Exception e)
-    {
-        e.printStackTrace();
-    }
-        //Assert.assertNotNull(entity);
-        //Assert.assertEquals(200, entity.getStatusCodeValue());
+        Assert.assertNotNull(entity);
+        Assert.assertEquals(200, entity.getStatusCodeValue());
 
     }
 
     @Test
     public void getTogglesByServiceNameTest() {
         ResponseEntity<List<ToggleDTO>> entity = toggleService.getTogglesByServiceName("IDM", "v2.0");
-       // Assert.assertNotNull(entity);
-       // Assert.assertEquals(200, entity.getStatusCodeValue());
+        Assert.assertNotNull(entity);
+        Assert.assertEquals(200, entity.getStatusCodeValue());
     }
 
     private ServiceToggleDTO createRequest() {
