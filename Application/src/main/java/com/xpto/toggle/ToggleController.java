@@ -17,6 +17,7 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 
 @RestController
+@RequestMapping(path = "/services")
 public class ToggleController {
 
     private static final Logger logger = LoggerFactory.getLogger(ToggleController.class);
@@ -24,7 +25,7 @@ public class ToggleController {
     private ToggleService toggleService;
 
     @PostMapping
-    @RequestMapping(value = "/services/toggle")
+    @RequestMapping(value = "/toggle")
     public Resource createToogle(@RequestBody ServiceToggleDTO request) {
         logger.info("request start for create toggle " + request.toString());
         int result = toggleService.createToogle(request);
@@ -35,7 +36,7 @@ public class ToggleController {
         return resource;
 
     }
-    @PutMapping("/services/toggle")
+    @PutMapping("/toggle")
     public ResponseEntity updateServiceToggle(@RequestBody ServiceToggleDTO request) {
         logger.info("request start for update toggle " + request.toString());
         ResponseEntity entity = toggleService.updateServiceToggle(request);
@@ -44,7 +45,7 @@ public class ToggleController {
     }
 
 
-    @GetMapping("/services/{serviceName}/{version}")
+    @GetMapping("/{serviceName}/{version}")
     public ResponseEntity<List<ToggleDTO>> getTogglesByServiceName(@PathVariable("serviceName") String serviceName, @PathVariable("version") String version) {
         logger.info("request start for getTogglesByServiceName service name " + serviceName + " verstion name " + version);
         ResponseEntity<List<ToggleDTO>> entity = toggleService.getTogglesByServiceName(serviceName, version);
