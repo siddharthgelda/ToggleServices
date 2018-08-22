@@ -62,7 +62,7 @@ After setup above prerequisite
         
         C.  Get Service
         
-11. Please take useage guide for operation detail from application folder.
+11. Please take guide for operation detail from document folder.
  
  
  
