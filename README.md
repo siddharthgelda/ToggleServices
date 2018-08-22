@@ -1,5 +1,5 @@
-# ToggleServices
-ToggleService
+# Toggle Services
+Toggle Managerment Service
 
 This project use for feature managerment between multiple services, we used two enttiy in the application
 
