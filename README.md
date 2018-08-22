@@ -5,6 +5,14 @@ This project use for feather managerment beetween multipal services, we used two
 
 1. Services</br>
 2. Toggle
+
+Total 3 operation are created 
+        
+        A.  Create service with toggle detail
+        
+        B.  Update service with toggle status
+        
+        C.  Get Service
   
 How to Run  ->
 
@@ -31,7 +39,9 @@ After setup above prerequisite
  
  6. Open command prompt in your machine thengo to you clone folder path inside the application folder.
  7. run command -> 
+      <br>
       a. mvn dependency:tree
+     <br> 
       b. mvn spring-boot:run
       
       In output of command will be lie 
@@ -41,6 +51,17 @@ After setup above prerequisite
           2018-Aug-22 07:13:17.420 DEBUG [main] c.x.t.Application - --Application Started--
           
 8. In port 8080 your application start successfully        
+
+9. Open your google chrome then open postman tool.
+
+10. Total 3 operation are created 
+        
+        A.  Create service with toggle detail
+        
+        B.  Update service with toggle status
+        
+        C.  Get Service
+        
 
  
  
