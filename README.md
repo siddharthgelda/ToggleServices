@@ -15,7 +15,7 @@ How to Run  ->
     3. My Sql for database setup
     4. Google Chrome PostMan for test
     
-After setUp above prerequisite
+After setup above prerequisite
 
   1 Clone git repository.
   
@@ -27,5 +27,23 @@ After setUp above prerequisite
       spring.datasource.url=jdbc:mysql://localhost:3306/toggle_service
       spring.datasource.username=root
       spring.datasource.password=root
- 5. Same 4 point, we need config test resource as well for Junit test src\test\Resource\application.properties src\main\Resource\application.properties     
+ 5. Same 4 point, we need config test resource as well for Junit test src\test\Resource\application.properties src\main\Resource\application.properties  
+ 
+ 6. Open command prompt in your machine thengo to you clone folder path inside the application folder.
+ 7. run command -> 
+      a. mvn dependency:tree
+      b. mvn spring-boot:run
+      
+      In output of command will be lie 
+      
+          2018-Aug-22 07:13:17.367 INFO  [main] o.s.b.w.e.t.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path            ''
+          2018-Aug-22 07:13:17.417 INFO  [main] c.x.t.Application - Started Application in 6.037 seconds (JVM running for 23.532)
+          2018-Aug-22 07:13:17.420 DEBUG [main] c.x.t.Application - --Application Started--
+          
+8. In port 8080 your application start successfully        
+
+ 
+ 
+ 
+ 
     
